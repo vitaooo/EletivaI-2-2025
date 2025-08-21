@@ -39,7 +39,7 @@
     echo "<p> A soma de $x e $y é $soma </p>";
     }
 
-    // - + * **elevado / divisão // divisão sem resto
+    // - + * **elevado / divisão // divisão sem resto %
 ?>
     
 </body>
