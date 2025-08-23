@@ -14,13 +14,13 @@
         <form method="post">
 
             <div class="mb-3">
-                <label for="peso" class="form-label">Digite seu peso em quilos: </label>
-                <input type="number" id="peso" name="peso" class="form-control">
+                <label for="preco" class="form-label">Digite preço do produto: </label>
+                <input type="number" id="preco" name="preco" class="form-control">
             </div>
 
             <div class="mb-3">
-                <label for="altura" class="form-label">Digite sua altura em metros: </label>
-                <input type="number" id="altura" name="altura" class="form-control" step="0.01">
+                <label for="desconto" class="form-label">Digite o desconto do produto: </label>
+                <input type="number" id="desconto" name="desconto" class="form-control" step="0.01">
             </div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
@@ -30,15 +30,12 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $peso = $_POST['peso'];
-            $altura = $_POST['altura'];
+            $preco = floatval($_POST['preco']);
+            $desconto = $_POST['desconto'];
 
+            $valorfinal = $preco - ($preco * ($desconto / 100));
 
-            $altura_float = floatval($altura);
-
-            $imc = $peso / ($altura_float ** 2);
-
-            echo "<p> Seu IMC é $imc </p>";
+            echo "<p> Valor final do produto é $valorfinal";
 
         }
         ?>

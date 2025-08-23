@@ -14,13 +14,18 @@
         <form method="post">
 
             <div class="mb-3">
-                <label for="peso" class="form-label">Digite seu peso em quilos: </label>
-                <input type="number" id="peso" name="peso" class="form-control">
+                <label for="capital" class="form-label">Digite o capital inicial: </label>
+                <input type="number" id="capital" name="capital" class="form-control">
             </div>
 
             <div class="mb-3">
-                <label for="altura" class="form-label">Digite sua altura em metros: </label>
-                <input type="number" id="altura" name="altura" class="form-control" step="0.01">
+                <label for="taxa" class="form-label">Digite a taxa do produto: </label>
+                <input type="number" id="taxa" name="taxa" class="form-control" step="0.01">
+            </div>
+
+            <div class="mb-3">
+                <label for="periodo" class="form-label">Digite o período de tempo: </label>
+                <input type="number" id="periodo" name="periodo" class="form-control" step="0.01">
             </div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
@@ -30,15 +35,13 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $peso = $_POST['peso'];
-            $altura = $_POST['altura'];
+            $capital = floatval($_POST['capital']);
+            $taxa = $_POST['taxa'];
+            $periodo = $_POST['periodo'];
 
+            $resultado = $capital + (($capital *($taxa /100)) * $periodo);
 
-            $altura_float = floatval($altura);
-
-            $imc = $peso / ($altura_float ** 2);
-
-            echo "<p> Seu IMC é $imc </p>";
+            echo "<p> Valor líquido final é $resultado";
 
         }
         ?>

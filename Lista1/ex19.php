@@ -14,13 +14,8 @@
         <form method="post">
 
             <div class="mb-3">
-                <label for="peso" class="form-label">Digite seu peso em quilos: </label>
-                <input type="number" id="peso" name="peso" class="form-control">
-            </div>
-
-            <div class="mb-3">
-                <label for="altura" class="form-label">Digite sua altura em metros: </label>
-                <input type="number" id="altura" name="altura" class="form-control" step="0.01">
+                <label for="day" class="form-label">Digite o dia: </label>
+                <input type="number" id="day" name="day" class="form-control">
             </div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
@@ -30,17 +25,19 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $peso = $_POST['peso'];
-            $altura = $_POST['altura'];
+            $day = $_POST['day'];
 
+            $horas = $day * 24;
 
-            $altura_float = floatval($altura);
+            $minutos = $horas * 60;
 
-            $imc = $peso / ($altura_float ** 2);
+            $segundos = $minutos * 60;
 
-            echo "<p> Seu IMC é $imc </p>";
-
+            echo "<p> $day dias em horas: $horas ";
+            echo "<p> $day dias em minutos: $minutos ";
+            echo "<p> $day dias em segundos: $segundos ";
         }
+
         ?>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"

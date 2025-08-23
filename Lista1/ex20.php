@@ -14,13 +14,13 @@
         <form method="post">
 
             <div class="mb-3">
-                <label for="peso" class="form-label">Digite seu peso em quilos: </label>
-                <input type="number" id="peso" name="peso" class="form-control">
+                <label for="distancia" class="form-label">Digite a distância percorrida: (em metros)</label>
+                <input type="number" id="distancia" name="distancia" class="form-control">
             </div>
 
             <div class="mb-3">
-                <label for="altura" class="form-label">Digite sua altura em metros: </label>
-                <input type="number" id="altura" name="altura" class="form-control" step="0.01">
+                <label for="tempo" class="form-label">Digite o tempo que demorou: (em minutos)</label>
+                <input type="number" id="tempo" name="tempo" class="form-control">
             </div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
@@ -30,17 +30,14 @@
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $peso = $_POST['peso'];
-            $altura = $_POST['altura'];
+            $distancia = $_POST['distancia'];
+            $tempo = $_POST['tempo'];
 
+            $velocidadeMedia = $distancia / $tempo;
 
-            $altura_float = floatval($altura);
-
-            $imc = $peso / ($altura_float ** 2);
-
-            echo "<p> Seu IMC é $imc </p>";
-
+            echo "<p> A velocidade média foi de: $velocidadeMedia m/s</p>";
         }
+
         ?>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
